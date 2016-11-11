@@ -16,7 +16,9 @@ import javax.ejb.Local;
  */
 @Local
 public interface viviendasDAO {
-    public List<Vivienda> getClientes() throws BussinessException;
-
-    Vivienda getViviendaById();
+    public List<Vivienda> getViviendas() throws BussinessException;
+    public boolean addVivienda(Vivienda v) throws BussinessException;
+    public boolean removeVivienda(int id) throws BussinessException;
+    public boolean updateVivienda(Vivienda v) throws BussinessException;
+    public Vivienda getViviendaById(int id) throws BussinessException;
 }
