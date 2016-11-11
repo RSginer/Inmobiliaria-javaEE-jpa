@@ -5,6 +5,8 @@
  */
 package com.inmobiliaria;
 
+import com.inmobiliaria.model.Cliente;
+import java.util.Iterator;
 import java.util.List;
 import javax.ejb.Stateless;
 
@@ -13,13 +15,51 @@ import javax.ejb.Stateless;
  * @author alumno
  */
 @Stateless
-public class clientesDAO implements clientesDAOLocal {
+public class clientesDAO implements clientesDAOImplList {
+
+    public static List<Cliente> listaClientes;
+
+    static {
+        Cliente c1 = new Cliente(1, "pepe");
+        Cliente c2 = new Cliente(2, "juan");
+        Cliente c3 = new Cliente(3, "jose");
+        listaClientes.add(c3);
+        listaClientes.add(c2);
+        listaClientes.add(c1);
+    }
 
     @Override
     public List<Cliente> getClientes() {
-        return null;
+        return listaClientes;
     }
-    
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+
+    @Override
+    public Cliente getClienteById(int id) {
+        boolean encontrado = false;
+        Cliente c = null;
+        Iterator ir = listaClientes.iterator();
+        while (ir.hasNext() && encontrado == false) {
+            c = (Cliente) ir.next();
+            if (c.getIdentificador() == id) {
+                encontrado = true;
+            }
+        }
+        return c;
+    }
+
+    @Override
+    public boolean addCliente(Cliente Cliente) {
+        return false;
+    }
+
+    @Override
+    public boolean removeCliente(Cliente Cliente) {
+        return false;
+    }
+
+    @Override
+    public boolean updateCliente(clientesDAO Cliente) {
+        return false;
+    }
+
 }

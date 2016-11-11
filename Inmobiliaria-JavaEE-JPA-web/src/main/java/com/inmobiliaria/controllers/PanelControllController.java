@@ -5,9 +5,11 @@
  */
 package com.inmobiliaria.controllers;
 
-import com.inmobiliaria.model.Usuario;
+import com.inmobiliaria.clientesDAOImplList;
+import com.inmobiliaria.exceptions.BussinessException;
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +19,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author alumno
  */
-public class LoginController extends HttpServlet {
+public class PanelControllController extends HttpServlet {
+
+    @EJB
+    private clientesDAOImplList clientesDAO;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,13 +35,26 @@ public class LoginController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        Usuario user = new Usuario();
-        user.setUserName(request.getParameter("userName"));
-        user.setPassword(request.getParameter("password"));
-        request.setAttribute("user", user);        
-        RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/PanelControllController");
-        rd.forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        String clientes = "";
+
+        try (PrintWriter out = response.getWriter()) {
+            try {
+                clientes = clientesDAO.getClientes().toString();
+            } catch (Exception ex) {
+                System.out.println("A petao !");
+            }
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet NewServlet</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet NewServlet at " + clientes + " regreg </h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

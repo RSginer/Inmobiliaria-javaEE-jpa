@@ -32,6 +32,10 @@
         <servlet-name>ClienteController</servlet-name>
         <servlet-class>com.inmobiliaria.controllers.clientes.ClienteController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PanelControllController</servlet-name>
+        <servlet-class>com.inmobiliaria.controllers.PanelControllController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/app/panel-de-control</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>ClienteController</servlet-name>
         <url-pattern>/app/ClienteController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PanelControllController</servlet-name>
+        <url-pattern>/PanelControllController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

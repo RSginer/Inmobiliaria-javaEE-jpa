@@ -3,6 +3,7 @@ com\inmobiliaria\controllers\viviendas\ViviendaController.class
 com\inmobiliaria\services\EnviarEmailService.class
 com\inmobiliaria\controllers\CerrarSesion.class
 com\inmobiliaria\model\Vivienda$tipoVenta.class
+com\inmobiliaria\controllers\PanelControllController.class
 com\inmobiliaria\controllers\clientes\ListaClientesController.class
 com\inmobiliaria\exceptions\BussinessMessage.class
 com\inmobiliaria\services\ComprobarPagosService.class
