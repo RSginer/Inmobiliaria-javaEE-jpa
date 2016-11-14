@@ -1,11 +1,9 @@
-com\inmobiliaria\clientesDAOImplList.class
 com\inmobiliaria\model\Cliente.class
 com\inmobiliaria\model\Vivienda$tipoVenta.class
 com\inmobiliaria\exceptions\BussinessException.class
 com\inmobiliaria\model\Usuario.class
 com\inmobiliaria\clientesDAO.class
 com\inmobiliaria\exceptions\BussinessMessage.class
-com\inmobiliaria\viviendasDAO.class
 com\inmobiliaria\model\Vivienda.class
-com\inmobiliaria\viviendasDAOImplList.class
+com\inmobiliaria\clientesDAOLocal.class
 com\inmobiliaria\model\Cliente$tipoCliente.class

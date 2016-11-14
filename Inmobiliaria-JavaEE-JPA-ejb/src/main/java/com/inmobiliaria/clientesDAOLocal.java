@@ -5,8 +5,7 @@
  */
 package com.inmobiliaria;
 
-import com.inmobiliaria.exceptions.BussinessException;
-import com.inmobiliaria.model.Vivienda;
+import com.inmobiliaria.model.Cliente;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,8 +14,10 @@ import javax.ejb.Local;
  * @author alumno
  */
 @Local
-public interface viviendasDAO {
-    public List<Vivienda> getClientes() throws BussinessException;
+public interface clientesDAOLocal {
 
-    Vivienda getViviendaById();
+    List<Cliente> getClientes();
+
+    Cliente getClienteById(int id);
+    
 }
