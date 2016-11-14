@@ -4,6 +4,8 @@ com\inmobiliaria\exceptions\BussinessException.class
 com\inmobiliaria\model\Usuario.class
 com\inmobiliaria\clientesDAO.class
 com\inmobiliaria\exceptions\BussinessMessage.class
+com\inmobiliaria\viviendasDAO.class
 com\inmobiliaria\model\Vivienda.class
 com\inmobiliaria\clientesDAOLocal.class
+com\inmobiliaria\viviendasDAOLocal.class
 com\inmobiliaria\model\Cliente$tipoCliente.class

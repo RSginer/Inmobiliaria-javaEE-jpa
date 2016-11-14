@@ -6,6 +6,7 @@
 package com.inmobiliaria.controllers;
 
 import com.inmobiliaria.clientesDAOLocal;
+import com.inmobiliaria.viviendasDAOLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -21,6 +22,9 @@ import javax.servlet.http.HttpServletResponse;
  * @author alumno
  */
 public class PanelControllController extends HttpServlet {
+
+    @EJB
+    private viviendasDAOLocal viviendasDAO;
 
     @EJB
     private clientesDAOLocal clientesDAO;
@@ -41,10 +45,12 @@ public class PanelControllController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String clientes = "";
+        String viviendas= "";
 
         try (PrintWriter out = response.getWriter()) {
             try {
                 clientes = clientesDAO.getClientes().toString();
+                viviendas = viviendasDAO.getViviendas().toString();
             } catch (Exception ex) {
                 System.out.println("A petao !");
                 System.out.println("Por esto: "+ex.getMessage());
@@ -57,6 +63,7 @@ public class PanelControllController extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>" + clientes + "</h1>");
+            out.println("<h1>" + viviendas + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

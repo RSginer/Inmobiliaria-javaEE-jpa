@@ -21,6 +21,21 @@ public class Vivienda {
     private String propietario;
     private Double superficie;
 
+    public Vivienda(Integer idVivienda, Integer idInteresado, String direccion, Double precio, String propietario, Double superficie) {
+        this.idVivienda = idVivienda;
+        this.idInteresado = idInteresado;
+        this.direccion = direccion;
+        this.precio = precio;
+        this.propietario = propietario;
+        this.superficie = superficie;
+    }
+
+    public Vivienda(Integer idVivienda, String direccion) {
+        this.idVivienda = idVivienda;
+        this.direccion = direccion;
+    }
+    
+    
     /**
      * @return the idVivienda
      */
