@@ -5,8 +5,7 @@
  */
 package com.inmobiliaria.controllers;
 
-import com.inmobiliaria.clientesDAOImplList;
-import com.inmobiliaria.exceptions.BussinessException;
+import com.inmobiliaria.clientesDAOLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -15,6 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+
 /**
  *
  * @author alumno
@@ -22,7 +23,10 @@ import javax.servlet.http.HttpServletResponse;
 public class PanelControllController extends HttpServlet {
 
     @EJB
-    private clientesDAOImplList clientesDAO;
+    private clientesDAOLocal clientesDAO;
+
+   
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,15 +47,16 @@ public class PanelControllController extends HttpServlet {
                 clientes = clientesDAO.getClientes().toString();
             } catch (Exception ex) {
                 System.out.println("A petao !");
+                System.out.println("Por esto: "+ex.getMessage());
             }
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet NewServlet</title>");
+            out.println("<title>Lista Clientes</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet NewServlet at " + clientes + " regreg </h1>");
+            out.println("<h1>" + clientes + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

@@ -10,7 +10,7 @@ package com.inmobiliaria.model;
  * @author alumno
  */
 public class Cliente {
-    private String identificador;
+    private Integer identificador;
     private String nombreCompleto;
     private Integer telefono;
     private String email;
@@ -18,19 +18,29 @@ public class Cliente {
         VENDEDOR,COMPRADOR,ALQUILADO
     }
     
-    
+    public Cliente(Integer identificador, String nombreCompleto, Integer telefono, String email) {
+        this.identificador = identificador;
+        this.nombreCompleto = nombreCompleto;
+        this.telefono = telefono;
+        this.email = email;
+    }
+
+    public Cliente(Integer identificador, String nombreCompleto) {
+        this.identificador = identificador;
+        this.nombreCompleto = nombreCompleto;
+    }
 
     /**
      * @return the identificador
      */
-    public String getIdentificador() {
+    public Integer getIdentificador() {
         return identificador;
     }
 
     /**
      * @param identificador the identificador to set
      */
-    public void setIdentificador(String identificador) {
+    public void setIdentificador(Integer identificador) {
         this.identificador = identificador;
     }
 

@@ -5,7 +5,9 @@
  */
 package com.inmobiliaria;
 
+
 import com.inmobiliaria.model.Cliente;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -15,11 +17,10 @@ import javax.ejb.Stateless;
  * @author alumno
  */
 @Stateless
-public class clientesDAO implements clientesDAOImplList {
+public class clientesDAO implements clientesDAOLocal {
+    public static  List<Cliente> listaClientes=new ArrayList();
 
-    public static List<Cliente> listaClientes;
-
-    static {
+    static{
         Cliente c1 = new Cliente(1, "pepe");
         Cliente c2 = new Cliente(2, "juan");
         Cliente c3 = new Cliente(3, "jose");
@@ -28,11 +29,13 @@ public class clientesDAO implements clientesDAOImplList {
         listaClientes.add(c1);
     }
 
+    
     @Override
     public List<Cliente> getClientes() {
         return listaClientes;
     }
-
+    
+    
     @Override
     public Cliente getClienteById(int id) {
         boolean encontrado = false;
@@ -46,20 +49,5 @@ public class clientesDAO implements clientesDAOImplList {
         }
         return c;
     }
-
-    @Override
-    public boolean addCliente(Cliente Cliente) {
-        return false;
-    }
-
-    @Override
-    public boolean removeCliente(Cliente Cliente) {
-        return false;
-    }
-
-    @Override
-    public boolean updateCliente(clientesDAO Cliente) {
-        return false;
-    }
-
+    
 }
