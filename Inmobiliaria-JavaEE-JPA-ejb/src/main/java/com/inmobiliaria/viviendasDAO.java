@@ -5,20 +5,10 @@
  */
 package com.inmobiliaria;
 
-import com.inmobiliaria.model.Cliente;
-import java.util.List;
-import javax.ejb.Local;
-
 /**
  *
  * @author alumno
  */
-@Local
-
-public interface clientesDAOLocal {
-
-    List<Cliente> getClientes();
-
-    Cliente getClienteById(int id);
+interface viviendasDAO {
     
 }
