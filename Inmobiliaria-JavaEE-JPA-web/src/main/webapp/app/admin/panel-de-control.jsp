@@ -15,7 +15,7 @@
     <body>
         <h1>Bienvenido <jsp:getProperty name="user" property="userName"></jsp:getProperty></h1>
         <a href="#" class="btn">Listado de viviendas</a>
-        <a href="#" class="btn">Listado de clientes</a>
+        <a href="ListaClientesController" class="btn">Listado de clientes</a>
         <a href="#" class="btn">Alquilar vivienda</a>
         <a href="#" class="btn">Vender vivienda</a>
         <a href="#" class="btn">Alta cliente</a>

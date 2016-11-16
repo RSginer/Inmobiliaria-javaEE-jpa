@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="login">
-            <form action="panel-de-control" method="POST">
+            <form action="LoginController" method="POST">
                 <h1 class="login__title">Inicia sesión para continuar</h1>
                 <label class="login__label" for="userName">Usuario </label><input id="userName" type="text" name="userName">
                 <label class="login__label" for="password">Contraseña </label><input type="password" id="password" name="password">

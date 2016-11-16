@@ -38,7 +38,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
-        <url-pattern>/app/panel-de-control</url-pattern>
+        <url-pattern>/app/LoginController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ComprobarPagosService</servlet-name>
