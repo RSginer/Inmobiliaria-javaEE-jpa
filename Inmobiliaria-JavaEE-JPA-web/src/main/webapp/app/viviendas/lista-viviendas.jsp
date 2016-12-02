@@ -12,6 +12,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
     </head>
     <body>
       <table>
@@ -67,7 +69,9 @@
                     <td>
                         <%=propietario%>
                     </td>
-               
+                    <td>
+                        <button><a href="ViviendaController?accion=editar&id=<%=idVivienda%>"><i class="fa fa-pencil" aria-hidden="true"></i></a></button>
+                    </td>
                     
                 </tr>
                 <%}
@@ -75,5 +79,6 @@
                
             </tbody>
         </table> 
+                <button><a href="LoginController">volver al inicio</a></button>
     </body>
 </html>

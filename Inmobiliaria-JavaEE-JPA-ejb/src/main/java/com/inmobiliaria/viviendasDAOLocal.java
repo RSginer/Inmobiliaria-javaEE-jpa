@@ -17,5 +17,9 @@ import javax.ejb.Local;
 public interface viviendasDAOLocal {
 
     List<Vivienda> getViviendas();
+
+    Vivienda getViviendaById(int idVivienda);
+
+    boolean updateVivienda(Vivienda vivienda);
     
 }

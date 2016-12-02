@@ -7,6 +7,7 @@ package com.inmobiliaria;
 
 import com.inmobiliaria.model.Vivienda;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.ejb.Stateless;
 
@@ -35,5 +36,37 @@ public class viviendasDAO implements viviendasDAOLocal {
         return listaViviendas;
     }
 
+    @Override
+    public Vivienda getViviendaById(int idVivienda) {
+         boolean encontrado = false;
+        Vivienda v = null;
+        Iterator ir = listaViviendas.iterator();
+        while (ir.hasNext() && encontrado == false) {
+            v = (Vivienda) ir.next();
+            if (v.getIdVivienda() == idVivienda) {
+                encontrado = true;
+            }
+        }
+        return v;
+    }
+
+    @Override
+    public boolean updateVivienda(Vivienda vivienda) {
+        boolean encontrado = false;
+        int i = 0;
+
+        while ((i < listaViviendas.size()) && (encontrado == false)) {
+            if (listaViviendas.get(i).getIdVivienda() == vivienda.getIdVivienda()) {
+                encontrado = true;
+            } else {
+                i++;
+            }
+        }      
+        if (encontrado == true) {
+            listaViviendas.set(i, vivienda);
+        }
+        return encontrado;
+    }
+    
     
 }

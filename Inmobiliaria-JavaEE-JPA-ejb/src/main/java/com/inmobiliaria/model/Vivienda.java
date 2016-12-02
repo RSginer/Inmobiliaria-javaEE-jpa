@@ -31,7 +31,9 @@ public class Vivienda implements Serializable{
         this.propietario = propietario;
         this.superficie = superficie;
     }
-
+    public Vivienda(){
+        
+    }
     public Vivienda(Integer idVivienda, String direccion) {
         this.idVivienda = idVivienda;
         this.direccion = direccion;

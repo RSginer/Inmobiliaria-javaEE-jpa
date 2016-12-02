@@ -5,8 +5,14 @@
  */
 package com.inmobiliaria.controllers.viviendas;
 
+import com.inmobiliaria.model.Vivienda;
+import com.inmobiliaria.viviendasDAOLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +23,9 @@ import javax.servlet.http.HttpServletResponse;
  * @author alumno
  */
 public class ViviendaController extends HttpServlet {
+
+    @EJB
+    private viviendasDAOLocal viviendasDAO;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,18 +38,46 @@ public class ViviendaController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ViviendaController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ViviendaController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String accion= request.getParameter("accion");
+         if(accion!=null && accion.equalsIgnoreCase("editar")){
+            String idVivienda= request.getParameter("id");
+            if(idVivienda!=null){
+                Integer id= Integer.parseInt(idVivienda);
+                Vivienda vivienda= new Vivienda();
+                try{
+                   vivienda= viviendasDAO.getViviendaById(id);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                request.setAttribute("vivienda", vivienda);
+                RequestDispatcher rd = request.getRequestDispatcher("/app/viviendas/vivienda.jsp");
+                rd.forward(request, response);
+            }
+        }else if(accion!=null && accion.equalsIgnoreCase("modificar")){
+            String id = request.getParameter("idVivienda");
+            String idInteresado= request.getParameter("idInteresado");
+            String direccion= request.getParameter("direccion");
+            String precio = request.getParameter("precio");
+            String superficie= request.getParameter("superficie");
+            String propietario= request.getParameter("propietario");
+            
+            Vivienda vivienda= new Vivienda();
+            vivienda.setIdVivienda(Integer.parseInt(id));
+            vivienda.setIdInteresado(Integer.parseInt(idInteresado));
+            vivienda.setPrecio(Double.parseDouble(precio));
+            vivienda.setDireccion(direccion);
+            vivienda.setSuperficie(Double.parseDouble(superficie));
+            vivienda.setPropietario(propietario);
+            try{
+               viviendasDAO.updateVivienda(vivienda);
+             }catch(Exception e){
+                 e.printStackTrace();
+             }
+             List<Vivienda>listaViviendas= new ArrayList();
+             listaViviendas=viviendasDAO.getViviendas();
+             request.setAttribute("listaViviendas", listaViviendas);
+             RequestDispatcher rd = request.getRequestDispatcher("/app/viviendas/lista-viviendas.jsp");
+             rd.forward(request, response);
         }
     }
 
