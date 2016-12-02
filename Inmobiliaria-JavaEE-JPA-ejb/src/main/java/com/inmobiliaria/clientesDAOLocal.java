@@ -20,5 +20,7 @@ public interface clientesDAOLocal {
     List<Cliente> getClientes();
 
     Cliente getClienteById(int id);
+
+    boolean updateCliente(Cliente cliente);
     
 }

@@ -49,5 +49,25 @@ public class clientesDAO implements clientesDAOLocal {
         }
         return c;
     }
+
+    @Override
+    public boolean updateCliente(Cliente cliente) {
+        
+        boolean encontrado = false;
+        int i = 0;
+
+        while ((i < listaClientes.size()) && (encontrado == false)) {
+            if (listaClientes.get(i).getIdentificador() == cliente.getIdentificador()) {
+                encontrado = true;
+            } else {
+                i++;
+            }
+        }      
+        if (encontrado == true) {
+            listaClientes.set(i, cliente);
+        }
+        return encontrado;
+    }
+    
     
 }

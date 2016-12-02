@@ -21,6 +21,9 @@ public class Cliente implements Serializable{
         VENDEDOR,COMPRADOR,ALQUILADO
     }
 
+    public Cliente() {
+    }
+    
     public Cliente(Integer identificador, String nombreCompleto, Integer telefono, String email) {
         this.identificador = identificador;
         this.nombreCompleto = nombreCompleto;
@@ -32,7 +35,9 @@ public class Cliente implements Serializable{
         this.identificador = identificador;
         this.nombreCompleto = nombreCompleto;
     }
-    
+    public Cliente(Integer id){
+        this.identificador=id;
+    }
     
     
     /**

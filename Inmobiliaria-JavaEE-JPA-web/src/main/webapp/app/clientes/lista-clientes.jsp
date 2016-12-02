@@ -13,6 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>ListarClientes</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <table>
@@ -54,7 +55,9 @@
                     <td>
                         <%=email%>
                     </td>
-                   
+                    <td>
+                        <button><a href="ClienteController?accion=editar&id=<%=id%>"><i class="fa fa-pencil" aria-hidden="true"></i></a></button>
+                    </td>
                     
                 </tr>
                 <%}

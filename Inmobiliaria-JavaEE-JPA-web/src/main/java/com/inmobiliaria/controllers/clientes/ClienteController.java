@@ -5,8 +5,14 @@
  */
 package com.inmobiliaria.controllers.clientes;
 
+import com.inmobiliaria.clientesDAOLocal;
+import com.inmobiliaria.model.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +23,9 @@ import javax.servlet.http.HttpServletResponse;
  * @author alumno
  */
 public class ClienteController extends HttpServlet {
+
+    @EJB
+    private clientesDAOLocal clientesDAO;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,19 +38,46 @@ public class ClienteController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ClienteController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ClienteController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        
+        String accion=request.getParameter("accion");
+        if(accion!=null && accion.equalsIgnoreCase("editar")){
+            String idCliente= request.getParameter("id");
+            if(idCliente!=null){
+                Integer id= Integer.parseInt(idCliente);
+                Cliente cliente= new Cliente();
+                try{
+                   cliente= clientesDAO.getClienteById(id);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                request.setAttribute("cliente", cliente);
+                RequestDispatcher rd = request.getRequestDispatcher("/app/clientes/cliente.jsp");
+                rd.forward(request, response);
+            }
+        }else if(accion!=null && accion.equalsIgnoreCase("modificar")){
+            String id = request.getParameter("identificador");
+            String nombreCompleto= request.getParameter("nombre");
+            String telefono= request.getParameter("telefono");
+            String email = request.getParameter("email");
+            
+            Cliente cliente= new Cliente();
+            cliente.setIdentificador(Integer.parseInt(id));
+            cliente.setNombreCompleto(nombreCompleto);
+            cliente.setTelefono(Integer.parseInt(telefono));
+            cliente.setEmail(email);
+             try{
+                 clientesDAO.updateCliente(cliente);
+             }catch(Exception e){
+                 e.printStackTrace();
+             }
+             List<Cliente>listaClientes= new ArrayList();
+             listaClientes=clientesDAO.getClientes();
+             request.setAttribute("listaClientes", listaClientes);
+             RequestDispatcher rd = request.getRequestDispatcher("/app/clientes/lista-clientes.jsp");
+             rd.forward(request, response);
+            
         }
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
