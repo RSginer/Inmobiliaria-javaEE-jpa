@@ -1,4 +1,6 @@
 
+<%@page import="java.util.List"%>
+<%@page import="com.inmobiliaria.model.Cliente"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- 
     Document   : lista-clientes
@@ -6,7 +8,6 @@
     Author     : alumno
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id="cliente" scope="session" class="com.inmobiliaria.model.Cliente" />
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,27 +32,34 @@
                     </th>               
                 </tr>
             </thead>
-            <tbody>  
-                <c:forEach var="c" items="session.getAttribute('listaClientes')">
-                        <jsp:setProperty name="cliente" property="email" value="${c.email}" />
-                        <jsp:setProperty name="cliente" property="telefono" value="${c.telefono}" />
-                        <jsp:setProperty name="cliente" property="nombre" value="${c.nombreCompleto}" />
-                        <jsp:setProperty name="cliente" property="identificador" value="${c.identificador}" />
-                          <tr>
-                        <td>
-                            <jsp:getProperty name="cliente" property="identificador" />
-                        </td>
-                        <td>
-                            <jsp:getProperty name="cliente" property="nombreCompleto" />
-                        </td>
-                        <td>
-                            <jsp:getProperty name="cliente" property="email" />
-                        </td>
-                        <td>
-                            <jsp:getProperty name="cliente" property="telefono" />
-                        </td>
-                    </tr>
-                </c:forEach>            
+            <tbody> 
+             <%
+                    List<Cliente> listaClientes = (List<Cliente>) request.getAttribute("listaClientes");
+                    for (Cliente c : listaClientes) {
+                        String nombre = c.getNombreCompleto();
+                        Integer id = c.getIdentificador();
+                        Integer numero = c.getTelefono();
+                        String email = c.getEmail();
+                %>
+                <tr>
+                    <td>
+                        <%=id%>
+                    </td>
+                    <td>
+                        <%=nombre%>
+                    </td>
+                    <td>
+                        <%=numero%>
+                    </td>
+                    <td>
+                        <%=email%>
+                    </td>
+                   
+                    
+                </tr>
+                <%}
+                %>  
+               
             </tbody>
         </table>
     </body>

@@ -3,7 +3,7 @@
     Created on : 21-oct-2016, 10:50:17
     Author     : alumno
 --%>
-<jsp:useBean id="user" scope="session"  class="com.inmobiliaria.model.Usuario" />
+<jsp:useBean id="user" scope="request"  class="com.inmobiliaria.model.Usuario" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +14,7 @@
     </head>
     <body>
         <h1>Bienvenido <jsp:getProperty name="user" property="userName"></jsp:getProperty></h1>
-        <a href="#" class="btn">Listado de viviendas</a>
+        <a href="ListaViviendasController" class="btn">Listado de viviendas</a>
         <a href="ListaClientesController" class="btn">Listado de clientes</a>
         <a href="#" class="btn">Alquilar vivienda</a>
         <a href="#" class="btn">Vender vivienda</a>

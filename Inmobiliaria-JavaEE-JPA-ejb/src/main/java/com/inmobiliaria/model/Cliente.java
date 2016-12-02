@@ -5,11 +5,14 @@
  */
 package com.inmobiliaria.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author alumno
  */
-public class Cliente {
+public class Cliente implements Serializable{
+    
     private Integer identificador;
     private String nombreCompleto;
     private Integer telefono;

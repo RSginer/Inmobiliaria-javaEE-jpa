@@ -5,11 +5,13 @@
  */
 package com.inmobiliaria.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Christian Begines
  */
-public class Vivienda {
+public class Vivienda implements Serializable{
     
     private Integer idVivienda;
     private Integer idInteresado;    

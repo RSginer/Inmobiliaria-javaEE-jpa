@@ -20,10 +20,10 @@ public class viviendasDAO implements viviendasDAOLocal {
     public static List<Vivienda> listaViviendas= new ArrayList();
     
     static{
-       Vivienda v1=new Vivienda(1,"calle Germanias"); 
-       Vivienda v2=new Vivienda(2,"calle de la reina"); 
-       Vivienda v3=new Vivienda(3,"calle vicente ferrer"); 
-       Vivienda v4=new Vivienda(4,"calle del rey"); 
+       Vivienda v1=new Vivienda(1,1,"calle Germanias",80.000,"jose",200.00); 
+       Vivienda v2=new Vivienda(2,3,"calle de la reina",80.000,"jose",200.00); 
+       Vivienda v3=new Vivienda(3,2,"calle vicente ferrer",80.000,"jose",200.00); 
+       Vivienda v4=new Vivienda(4,6,"calle del rey",80.000,"jose",200.00); 
        listaViviendas.add(v1);
        listaViviendas.add(v2);
        listaViviendas.add(v3);

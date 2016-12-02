@@ -27,7 +27,6 @@ public class ListaClientesController extends HttpServlet {
     @EJB
     private clientesDAOLocal clientesDAO;
 
-    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,14 +38,12 @@ public class ListaClientesController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-   List<Cliente>listaClientes = new ArrayList<>();
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            listaClientes=clientesDAO.getClientes();
-            request.getSession().setAttribute("listaClientes", listaClientes);
-            RequestDispatcher rd = request.getRequestDispatcher("clientes/lista-clientes.jsp");
+        
+            List<Cliente> listaClientes = clientesDAO.getClientes();
+            request.setAttribute("listaClientes", listaClientes);
+            RequestDispatcher rd = request.getRequestDispatcher("/app/clientes/lista-clientes.jsp");
             rd.forward(request, response);
-    }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -21,12 +21,12 @@ public class clientesDAO implements clientesDAOLocal {
     public static  List<Cliente> listaClientes=new ArrayList();
 
     static{
-        Cliente c1 = new Cliente(1, "pepe");
-        Cliente c2 = new Cliente(2, "juan");
-        Cliente c3 = new Cliente(3, "jose");
-        listaClientes.add(c3);
-        listaClientes.add(c2);
+        Cliente c1 = new Cliente(1, "pepe",657849604,"pepe@gmail.com");
+        Cliente c2 = new Cliente(2, "juan",564343733,"juan@gmail.com");
+        Cliente c3 = new Cliente(3, "jose",654869708,"jose@gmail.com");
         listaClientes.add(c1);
+        listaClientes.add(c2);
+        listaClientes.add(c3);
     }
 
     
