@@ -65,6 +65,6 @@
                
             </tbody>
         </table>
-                <button><a href="LoginController">volver al inicio</a></button>
+                <button><a href="../app/LoginController">volver al inicio</a></button>
     </body>
 </html>

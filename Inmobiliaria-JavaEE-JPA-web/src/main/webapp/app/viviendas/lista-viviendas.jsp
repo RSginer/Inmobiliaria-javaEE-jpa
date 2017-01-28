@@ -70,7 +70,7 @@
                         <%=propietario%>
                     </td>
                     <td>
-                        <button><a href="ViviendaController?accion=editar&id=<%=idVivienda%>"><i class="fa fa-pencil" aria-hidden="true"></i></a></button>
+                        <button><a href="Vivienda/editar?id=<%=idVivienda%>"><i class="fa fa-pencil" aria-hidden="true"></i></a></button>
                     </td>
                     
                 </tr>
@@ -79,6 +79,6 @@
                
             </tbody>
         </table> 
-                <button><a href="LoginController">volver al inicio</a></button>
+                <button><a href="../app/LoginController">volver al inicio</a></button>
     </body>
 </html>

@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Modificar Cliente</h1>
-        <form action="Cliente/modificar?id=${cliente.getIdentificador()}" method="POST">
+        <form action="../Cliente/modificar?id=${cliente.getIdentificador()}" method="POST">
             <div>
                   <label for="identificador">Identificador:</label>
             <input id="identificador" type="text" name="identificador" value="${cliente.getIdentificador()}">

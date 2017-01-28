@@ -49,7 +49,6 @@ public class ClienteController extends HttpServlet {
         String userPath = request.getServletPath();
         if (userPath.equals("/app/ListaClientesController")) {
             listarClientes(request, response);
-
         } else if(userPath.contains("/app/Cliente/editar")){
                 editarCliente(request, response);
         }else if(userPath.contains("/app/Cliente/modificar")){

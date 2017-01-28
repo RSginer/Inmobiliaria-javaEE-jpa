@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Modificar Vivienda</h1>
-        <form action="ViviendaController?accion=modificar&id=${vivienda.getIdVivienda()}" method="post">
+        <form action="../Vivienda/modificar?id=${vivienda.getIdVivienda()}" method="post">
             <div>
                 <label for="idVivienda">IdVivienda:</label>
                 <input id="idVivienda" type="text" name="idVivienda" value="${vivienda.getIdVivienda()}">

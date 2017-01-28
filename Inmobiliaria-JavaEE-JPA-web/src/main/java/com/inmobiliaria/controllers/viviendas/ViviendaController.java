@@ -48,7 +48,7 @@ public class ViviendaController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String accion = request.getParameter("accion");
+      
         String userPath = request.getServletPath();
         if (userPath.equals("/app/ListaViviendasController")) {
             this.listarViviendas(request, response);

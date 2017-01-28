@@ -34,7 +34,7 @@ public class LoginController extends HttpServlet {
         Usuario user = new Usuario();
         user.setUserName(request.getParameter("userName"));
         user.setPassword(request.getParameter("password"));
-        request.setAttribute("user", user);
+        request.getSession().setAttribute("user", user);
         RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/app/admin/panel-de-control.jsp");
         rd.forward(request, response);
     }
