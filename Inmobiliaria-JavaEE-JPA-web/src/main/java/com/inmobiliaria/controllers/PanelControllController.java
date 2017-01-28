@@ -5,8 +5,8 @@
  */
 package com.inmobiliaria.controllers;
 
-import com.inmobiliaria.clientesDAOLocal;
-import com.inmobiliaria.viviendasDAOLocal;
+import com.inmobiliaria.dao.clientesDAOLocal;
+import com.inmobiliaria.dao.viviendasDAOLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;

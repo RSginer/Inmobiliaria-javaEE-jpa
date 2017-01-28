@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.inmobiliaria;
+package com.inmobiliaria.dao;
 
 import com.inmobiliaria.model.Cliente;
 import java.util.List;

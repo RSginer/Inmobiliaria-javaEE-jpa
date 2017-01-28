@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.inmobiliaria;
+package com.inmobiliaria.dao;
 
 
 import com.inmobiliaria.model.Cliente;
@@ -43,7 +43,7 @@ public class clientesDAO implements clientesDAOLocal {
         Iterator ir = listaClientes.iterator();
         while (ir.hasNext() && encontrado == false) {
             c = (Cliente) ir.next();
-            if (c.getIdentificador() == id) {
+            if (c.getId() == id) {
                 encontrado = true;
             }
         }
@@ -57,7 +57,7 @@ public class clientesDAO implements clientesDAOLocal {
         int i = 0;
 
         while ((i < listaClientes.size()) && (encontrado == false)) {
-            if (listaClientes.get(i).getIdentificador() == cliente.getIdentificador()) {
+            if (listaClientes.get(i).getId() == cliente.getId()) {
                 encontrado = true;
             } else {
                 i++;

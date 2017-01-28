@@ -5,7 +5,7 @@
  */
 package com.inmobiliaria.controllers.clientes;
 
-import com.inmobiliaria.clientesDAOLocal;
+import com.inmobiliaria.dao.clientesDAOLocal;
 import com.inmobiliaria.model.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -116,7 +116,7 @@ public class ClienteController extends HttpServlet {
         String email = request.getParameter("email");
 
         Cliente cliente = new Cliente();
-        cliente.setIdentificador(Integer.parseInt(id));
+        cliente.setId(Integer.parseInt(id));
         cliente.setNombreCompleto(nombreCompleto);
         cliente.setTelefono(Integer.parseInt(telefono));
         cliente.setEmail(email);

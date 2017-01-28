@@ -6,7 +6,8 @@
 package com.inmobiliaria.controllers.viviendas;
 
 import com.inmobiliaria.model.Vivienda;
-import com.inmobiliaria.viviendasDAOLocal;
+import com.inmobiliaria.dao.viviendasDAOLocal;
+import com.inmobiliaria.model.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -134,15 +135,14 @@ public class ViviendaController extends HttpServlet {
         String direccion = request.getParameter("direccion");
         String precio = request.getParameter("precio");
         String superficie = request.getParameter("superficie");
-        String propietario = request.getParameter("propietario");
+      
 
         Vivienda vivienda = new Vivienda();
-        vivienda.setIdVivienda(Integer.parseInt(id));
-        vivienda.setIdInteresado(Integer.parseInt(idInteresado));
+        vivienda.setId(Integer.parseInt(id));
+        //vivienda.setIdInteresado(Integer.parseInt(idInteresado));
         vivienda.setPrecio(Double.parseDouble(precio));
         vivienda.setDireccion(direccion);
-        vivienda.setSuperficie(Double.parseDouble(superficie));
-        vivienda.setPropietario(propietario);
+        vivienda.setSuperficie(Double.parseDouble(superficie));   
         try {
             viviendasDAO.updateVivienda(vivienda);
             List<Vivienda> listaViviendas = new ArrayList();
