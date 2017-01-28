@@ -14,6 +14,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +23,13 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author alumno
  */
+@WebServlet(name = "ClienteController",
+        loadOnStartup = 1,
+        urlPatterns = {
+            "/app/ListaClientesController",
+            "/app/Cliente/editar",
+            "/app/Cliente/modificar"
+        })
 public class ClienteController extends HttpServlet {
 
     @EJB
@@ -38,46 +46,17 @@ public class ClienteController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String accion=request.getParameter("accion");
-        if(accion!=null && accion.equalsIgnoreCase("editar")){
-            String idCliente= request.getParameter("id");
-            if(idCliente!=null){
-                Integer id= Integer.parseInt(idCliente);
-                Cliente cliente= new Cliente();
-                try{
-                   cliente= clientesDAO.getClienteById(id);
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-                request.setAttribute("cliente", cliente);
-                RequestDispatcher rd = request.getRequestDispatcher("/app/clientes/cliente.jsp");
-                rd.forward(request, response);
-            }
-        }else if(accion!=null && accion.equalsIgnoreCase("modificar")){
-            String id = request.getParameter("identificador");
-            String nombreCompleto= request.getParameter("nombre");
-            String telefono= request.getParameter("telefono");
-            String email = request.getParameter("email");
-            
-            Cliente cliente= new Cliente();
-            cliente.setIdentificador(Integer.parseInt(id));
-            cliente.setNombreCompleto(nombreCompleto);
-            cliente.setTelefono(Integer.parseInt(telefono));
-            cliente.setEmail(email);
-             try{
-                 clientesDAO.updateCliente(cliente);
-             }catch(Exception e){
-                 e.printStackTrace();
-             }
-             List<Cliente>listaClientes= new ArrayList();
-             listaClientes=clientesDAO.getClientes();
-             request.setAttribute("listaClientes", listaClientes);
-             RequestDispatcher rd = request.getRequestDispatcher("/app/clientes/lista-clientes.jsp");
-             rd.forward(request, response);
-            
+        String userPath = request.getServletPath();
+        if (userPath.equals("/app/ListaClientesController")) {
+            listarClientes(request, response);
+
+        } else if(userPath.contains("/app/Cliente/editar")){
+                editarCliente(request, response);
+        }else if(userPath.contains("/app/Cliente/modificar")){
+                this.updateCliente(request, response);
         }
-       
+            
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -119,4 +98,56 @@ public class ClienteController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-}
+    private void listarClientes(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            List<Cliente> listaClientes = clientesDAO.getClientes();
+            request.setAttribute("listaClientes", listaClientes);
+            RequestDispatcher rd = request.getRequestDispatcher("/app/clientes/lista-clientes.jsp");
+            rd.forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void updateCliente(HttpServletRequest request, HttpServletResponse response) {
+        String id = request.getParameter("identificador");
+        String nombreCompleto = request.getParameter("nombre");
+        String telefono = request.getParameter("telefono");
+        String email = request.getParameter("email");
+
+        Cliente cliente = new Cliente();
+        cliente.setIdentificador(Integer.parseInt(id));
+        cliente.setNombreCompleto(nombreCompleto);
+        cliente.setTelefono(Integer.parseInt(telefono));
+        cliente.setEmail(email);
+        try {
+            clientesDAO.updateCliente(cliente);
+            List<Cliente> listaClientes = new ArrayList();
+            listaClientes = clientesDAO.getClientes();
+            request.setAttribute("listaClientes", listaClientes);
+            RequestDispatcher rd = request.getRequestDispatcher("/app/clientes/lista-clientes.jsp");
+            rd.forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void editarCliente(HttpServletRequest request, HttpServletResponse response) {
+        String idCliente = request.getParameter("id");
+        if (idCliente != null) {
+            Integer id = Integer.parseInt(idCliente);
+            Cliente cliente = new Cliente();
+            try {
+                cliente = clientesDAO.getClienteById(id);
+                request.setAttribute("cliente", cliente);
+                RequestDispatcher rd = request.getRequestDispatcher("/app/clientes/cliente.jsp");
+                rd.forward(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+           
+        }
+    }
+ }

@@ -56,7 +56,7 @@
                         <%=email%>
                     </td>
                     <td>
-                        <button><a href="ClienteController?accion=editar&id=<%=id%>"><i class="fa fa-pencil" aria-hidden="true"></i></a></button>
+                        <button><a href="Cliente/editar?id=<%=id%>"><i class="fa fa-pencil" aria-hidden="true"></i></a></button>
                     </td>
                     
                 </tr>

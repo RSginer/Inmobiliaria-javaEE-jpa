@@ -13,16 +13,8 @@
         <servlet-class>com.inmobiliaria.services.EnviarEmailService</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ListaViviendasController</servlet-name>
-        <servlet-class>com.inmobiliaria.controllers.viviendas.ListaViviendasController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ViviendaController</servlet-name>
         <servlet-class>com.inmobiliaria.controllers.viviendas.ViviendaController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ListaClientesController</servlet-name>
-        <servlet-class>com.inmobiliaria.controllers.clientes.ListaClientesController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CerrarSesion</servlet-name>
@@ -49,16 +41,10 @@
         <url-pattern>/app/EnviarEmailService</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ListaViviendasController</servlet-name>
-        <url-pattern>/app/ListaViviendasController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>ViviendaController</servlet-name>
-        <url-pattern>/app/ViviendaController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ListaClientesController</servlet-name>
-        <url-pattern>/app/ListaClientesController</url-pattern>
+        <url-pattern>/app/ListaViviendasController</url-pattern>
+        <url-pattern>/app/Vivienda/editar</url-pattern>
+        <url-pattern>/app/Vivienda/modificar</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CerrarSesion</servlet-name>
@@ -66,7 +52,9 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ClienteController</servlet-name>
-        <url-pattern>/app/ClienteController</url-pattern>
+        <url-pattern>/app/Cliente/editar</url-pattern>
+        <url-pattern>/app/Cliente/modificar</url-pattern>
+        <url-pattern>/app/ListaClientesController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PanelControllController</servlet-name>
